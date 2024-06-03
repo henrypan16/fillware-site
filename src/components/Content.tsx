@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function Content({children}) {
+interface Props {
+  children: React.ReactNode
+  innerRef: {
+      current: HTMLDivElement[]
+  }
+}
+
+export default function Content({children, innerRef}: Props) {
   return (
-    
-      <div className="py-8 px-4 max-w-screen-xl sm:py-16 lg:px-6 m-auto flex">
+      <div className="px-4 max-w-screen-xl lg:px-6 m-auto sm:flex sm:flex-row flex flex-col sm:h-screen" ref={(ref) => innerRef.current.push(ref)}>
         {children}
       </div>
 )}
